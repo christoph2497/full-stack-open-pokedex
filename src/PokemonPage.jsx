@@ -29,9 +29,7 @@ const PokemonPage = ({ previous, next }) => {
       value: stat.base_stat,
     }))
     .reverse()
-  const normalAbility = pokemon.abilities.find(
-    (ability) => !ability.is_hidden,
-  )
+  const normalAbility = pokemon.abilities.find((ability) => !ability.is_hidden)
   const hiddenAbility = pokemon.abilities.find(
     (ability) => ability.is_hidden === true,
   )
@@ -41,11 +39,9 @@ const PokemonPage = ({ previous, next }) => {
   return (
     <>
       <div className="links">
-        {previous && (
-          <Link to={`/pokemon/${previous.name}`}>Previous</Link>
-        )}
+        {previous && <Link to={`/pokemon/${previous.name}`}>Previous</Link>}
         <Link to="/">Home</Link>
-        {next && <Link to={`/pokemon/${previous.name}`}>Next</Link>}
+        {next && <Link to={`/pokemon/${next.name}`}>Next</Link>}
       </div>
       <div className={`pokemon-page pokemon-type-${type.name}`}>
         <div
@@ -61,12 +57,8 @@ const PokemonPage = ({ previous, next }) => {
               <tbody>
                 {stats.map(({ name, value }) => (
                   <tr key={name}>
-                    <td className="pokemon-stats-name">
-                      {name}
-                    </td>
-                    <td className="pokemon-stats-value">
-                      {value}
-                    </td>
+                    <td className="pokemon-stats-name">{name}</td>
+                    <td className="pokemon-stats-value">{value}</td>
                   </tr>
                 ))}
               </tbody>
@@ -75,16 +67,12 @@ const PokemonPage = ({ previous, next }) => {
           <div className="pokemon-abilities">
             {normalAbility && (
               <PokemonAbility
-                abilityName={formatName(
-                  normalAbility.ability.name,
-                )}
+                abilityName={formatName(normalAbility.ability.name)}
               />
             )}
             {hiddenAbility && (
               <PokemonAbility
-                abilityName={formatName(
-                  hiddenAbility.ability.name,
-                )}
+                abilityName={formatName(hiddenAbility.ability.name)}
               />
             )}
           </div>
