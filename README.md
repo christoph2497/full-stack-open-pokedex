@@ -16,5 +16,4 @@ Start by running `npm install` inside the project folder
 
 
 The app is deployed with render
-
 https://full-stack-open-pokedex-vbsp.onrender.com/
