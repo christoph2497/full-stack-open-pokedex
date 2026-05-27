@@ -4,6 +4,9 @@ on:
     push:
         branches:
             - main
+    pull_request:
+        branches: [main]
+        types: [opened, synchronize]
 
 jobs:
     simple_deployment_pipeline:
@@ -22,4 +25,5 @@ jobs:
             - name: Run npm build
               run: npm run build
             - name: Trigger deployment to render.com
+              if: ${{ github.event_name == 'push' }}
               run: curl ${{ secrets.RENDER_DEPLOY_HOOK }}
